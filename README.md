@@ -87,6 +87,7 @@ for f in *_colocalizations_richness.csv; do
   awk -F',' -v s="$sample" 'NR==1 {gsub(/[[:space:]]/, "", $2); print s "\t" $2}' "$f"
 done >> summary_colocalizations.tsv
 ```
+
 ### Blast
 This part is not part of the initial TELcOMB pipeline designed by Bravo et al.  
 The identification of the species per ARG is done only on the first ARG found in each contig.
@@ -99,6 +100,12 @@ for f in *__assembled.fastq_colocalizations.csv; do
 done
 ```
 2- In Telcomb/Blast run the files 1 to 5. Make sure the input file is pointing to the right place. This will generates the file 'all_samples_merged.csv' with the sample, the contig with an ARG, infos on the ARG and the species found with the blast.
+
+### Extract the resistance that are linked to mutations and not genes
+```
+cut -d "," -f 3 all_samples_merged.csv | cut -d ";" -f 1 | grep "SNP" | cut -d "|" -f 5 |sort -u > SNP.txt
+```
+Then, for visualization, the 'SNP.txt' list can be used to avoid plotting the mutational resistance.
 
 ### RPKM
 This module computes an estimation of the RPKM (Reads Per Kilobase per Million reads) values for ARGs across samples. It integrates coverage and count data to normalize gene abundance and enable comparisons between samples.
@@ -194,7 +201,7 @@ Rscripts merging/files_manip/join.R.R
 Output : 'joint_relativ.csv' and 'joint_norm.csv'
 
 ## Visual representation
-To visualize the output, some graphs can be generated in the "workflow/plot_stats" directory. To avoid repetition and heaviness, he input files to generate the graphs were not put with the according script, only the names. 
+To visualize the output, some graphs can be generated in the "workflow/plot_stats" directory. To avoid repetition and heaviness, some input files to generate the graphs were not put with the according script, only the names. 
 The AMRs are often classified according to the WHO antibiotics classification. 
 
 ### Reads and contigs count
@@ -217,17 +224,21 @@ Rscripts plot_stats/reads_contigs/nbr_reads_classified.R
 ### Bubble plot
 Input : "all_sample_one_ARG_per_line" and  "all_samples_one_ARG_per_line-AMR_who"  
 3 types of plot :
-- With every ARGs detected
+- With every AMRs detected
 ```
 Rscripts plot_stats/bubble_plot/bubble.R
 ```
-- With only the ARGs for antibiotics :
+- With only the AMRs for antibiotics :
 ```
 Rscripts plot_stats/bubble_plot/bubble_nometal.R
 ```
-- With only the ARGS for antibiotics colored according to the WHO antibiotics classification
+- With only the AMRS for antibiotics colored according to the WHO antibiotics classification
 ```
 Rscripts plot_stats/bubble_plot/bubble_who.R
+```
+- With only the AMRS for antibiotics colored according to the WHO antibiotics classification and no mutational resistance
+```
+Rscripts plot_stats/bubble_plot/bubble_who_nosnp.R
 ```
 
 ### Sankey plot
