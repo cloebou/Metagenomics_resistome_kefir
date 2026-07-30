@@ -1,0 +1,5 @@
+"{sample}_contig_coloc_seq.fasta"
+"{sample}_seq_coloc.fasta"
+"{sample}_contig_blast"
+"{sample}_merged.csv"
+"all_samples_merged.csv"

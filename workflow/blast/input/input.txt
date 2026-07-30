@@ -1,0 +1,13 @@
+The inputs are coming from the TELCoMB workflow:
+"{sample}_contig_coloc.fasta"
+"{sample}_assembled.fastq"
+"{sample}_assembled.fastq_colocalizations.csv"
+
+WARNING : A manipulation is needed in order to get {sample}_contig_coloc.fasta
+In the folder with the files "*_assembled.fastq_colocalizations.csv" (Telcomb/out): Extract contigs's name and the sequence
+```
+for f in *__assembled.fastq_colocalizations.csv; do
+    sample=${f%%_assembled.fastq_colocalizations.csv}
+    awk -F',' 'NR>1 {print ">"$1}' "$f" > "${sample}_contig_coloc.fasta"
+done
+```

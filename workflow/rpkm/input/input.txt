@@ -1,0 +1,3 @@
+'contig_arg_classif.csv' :  1 sample with 1 contig and 1 ARG, all type of WHO classification 
+'sample_nbreads_length.csv' : sample, number of total reads, mean length
+'sample_collection.csv'
