@@ -15,7 +15,7 @@ Go directly to the folder results. You will find here the plot, main tables and 
 5- Follow the 'Visual representation' below to generate plots
 
 ## Workflow
-![Workflow du projet ](workflow_simplified.png)
+![Workflow du projet ](workflow_simple.png)
 
 ## Data and workspace implementation
 ### Data
