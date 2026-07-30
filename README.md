@@ -105,6 +105,7 @@ This module computes an estimation of the RPKM (Reads Per Kilobase per Million r
 Hypothesis : Uniform coverage along contig.
 
 In the folder workflow/rpkm run the scripts following their numbers.
+For visualization, run the scripts : violon_plot_*.R in workflow/plot_stats/rpkm
 
 ## Taxonomy 
 This part aims to characterize the microbial diversity in kefir.
@@ -149,6 +150,7 @@ Remove '-resume' if you want to start from scratch.
 
 ### Run alpha and beta microbial diversity
 The 'alpha_diversity.py' and 'beta_diversity' scripts were made by Jennifer Lu et al., 2019. 
+Execute the following lines to calculate them :
 ```
 # Alpha diversity
 echo "sample,alpha,value" > alpha.csv
@@ -170,7 +172,7 @@ Rscripts taxonomy/visu_families.R
 Rscripts taxonomy/visu_species.R
 ```
 
-## Merging Colocalization and taxonomy
+## Merging Co-localization and taxonomy
 
 To get a file ("species_relative_abundance.csv" ) with every species that represent more then 0.005% of each sample. Not normalized. 
 ```
@@ -192,8 +194,8 @@ Rscripts merging/files_manip/join.R.R
 Output : 'joint_relativ.csv' and 'joint_norm.csv'
 
 ## Visual representation
-To visualize the output, some graphs can be generated in the "merging" directory. For better understanding, the input files to generate the graphs were put inside each folder with the according script. 
-The ARGs are often classified according to the WHO antibiotics classification. 
+To visualize the output, some graphs can be generated in the "workflow/plot_stats" directory. To avoid repetition and heaviness, he input files to generate the graphs were not put with the according script, only the names. 
+The AMRs are often classified according to the WHO antibiotics classification. 
 
 ### Reads and contigs count
 To get the number of reads per sample :  
@@ -207,9 +209,9 @@ Add the localisation of the '*_reads_length.json' in nbrcontig.sh and run it.
 
 To create barplot of the number of reads per samples, number of cleaned reads generated with taxonomy workflow per samples and number of contigs generated with TELCoB workflow per samples : run the R scripts in merging/reads_contigs 
 ```
-Rscripts merging/reads_contigs/nbr_contigs.R
-Rscripts merging/reads_contigs/nbr_reads.R
-Rscripts merging/reads_contigs/nbr_reads_classified.R
+Rscripts plot_stats/reads_contigs/nbr_contigs.R
+Rscripts plot_stats/reads_contigs/nbr_reads.R
+Rscripts plot_stats/reads_contigs/nbr_reads_classified.R
 ```
 
 ### Bubble plot
@@ -217,32 +219,32 @@ Input : "all_sample_one_ARG_per_line" and  "all_samples_one_ARG_per_line-AMR_who
 3 types of plot :
 - With every ARGs detected
 ```
-Rscripts merging/bubble_plot/bubble.R
+Rscripts plot_stats/bubble_plot/bubble.R
 ```
 - With only the ARGs for antibiotics :
 ```
-Rscripts merging/bubble_plot/bubble_nometal.R
+Rscripts plot_stats/bubble_plot/bubble_nometal.R
 ```
 - With only the ARGS for antibiotics colored according to the WHO antibiotics classification
 ```
-Rscripts merging/bubble_plot/bubble_who.R
+Rscripts plot_stats/bubble_plot/bubble_who.R
 ```
 
 ### Sankey plot
 To plot ARG -> Samples (colored by metadata) :
 ```
-Rscripts merging/sankey/Exposition.R
+Rscripts plot_stats/sankey/Exposition.R
 ```
 
 To plot ARG -> Species, Species -> Samples, ARG -> Species -> Samples :
 ```
-Rscripts merging/sankey/Sankey_split.R
+Rscripts plot_stats/sankey/Sankey_split.R
 ```
 
 ### PCoA and PCA
-To visualize the beta microbial diversity : 
+For statistics and visualization of the alpha and beta microbial diversity : 
 ```
-Rscripts merging/PCA_PCoA/diversiy.R
+Rscripts plot_stats/PCA_PCoA/diversiy.R
 ```
 
 Run the following script to :
@@ -250,7 +252,7 @@ Run the following script to :
 - Calculates the Beta diveristy using the Bray-Curtis index for ARGs antibiotics classified according to the WHO as "Authorized for use in humans only",
 - Visualize the beta ARGs diversity thanks to a PCoA plot
 ```
-Rscripts merging/PCA_PCoA/multivariate_arg.R
+Rscripts plot_stats/PCA_PCoA/multivariate_arg.R
 ```
 
 
