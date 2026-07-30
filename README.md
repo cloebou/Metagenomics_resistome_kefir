@@ -100,6 +100,12 @@ done
 ```
 2- In Telcomb/Blast run the files 1 to 5. Make sure the input file is pointing to the right place. This will generates the file 'all_samples_merged.csv' with the sample, the contig with an ARG, infos on the ARG and the species found with the blast.
 
+### RPKM
+This module computes an estimation of the RPKM (Reads Per Kilobase per Million reads) values for ARGs across samples. It integrates coverage and count data to normalize gene abundance and enable comparisons between samples.
+Hypothesis : Uniform coverage along contig.
+
+In the folder workflow/rpkm run the scripts following their numbers.
+
 ## Taxonomy 
 This part aims to characterize the microbial diversity in kefir.
 
