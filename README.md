@@ -1,4 +1,4 @@
-# Transferable_AMR_Kefir
+#  🦠 Transferable_AMR_Kefir 🥛
 This project aims to determine whether transferable AMR is present in kefir and, if so, to characterize it in terms of relative abundance and diversity. The data used in this project comes from open kefir metagenomic project.
 
 ## How to use this Github ?
