@@ -4,7 +4,7 @@ This project aims to determine whether transferable AMR is present in kefir and,
 ## How to use this Github ?
 
 ### Option 1 : The goal is to check the output of the study
-Go directly to the folder results. You will find here the plot, main results and analysis.
+Go directly to the folder results. You will find here the plot, main tables and analysis.
 
 ### Option 2 : The goal is to reproduce the output or use the workflow with other data
 0- Download this Github. You can empty the result folder  
